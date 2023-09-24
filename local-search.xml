@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2023/09/20/%E5%96%9C%E6%AC%A2%E8%9D%B4%E8%9D%B6%20%E5%88%AB%E5%8E%BB%E8%BF%BD%E9%80%90%20%E5%8E%BB%E7%A7%8D%E8%8A%B1/"/>
-    <url>/2023/09/20/%E5%96%9C%E6%AC%A2%E8%9D%B4%E8%9D%B6%20%E5%88%AB%E5%8E%BB%E8%BF%BD%E9%80%90%20%E5%8E%BB%E7%A7%8D%E8%8A%B1/</url>
+    <title>配置：pytorch+conda+pycharm</title>
+    <link href="/2023/09/24/%E9%85%8D%E7%BD%AE%EF%BC%9Apytorch-conda-pycharm/"/>
+    <url>/2023/09/24/%E9%85%8D%E7%BD%AE%EF%BC%9Apytorch-conda-pycharm/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h3 id="下载conda"><a href="#下载conda" class="headerlink" title="下载conda"></a>下载conda</h3><p>miniconda和anaconda应该都是可以的，因为花书上是miniconda所以我也是装的miniconda<br>【李沐动手学深度学习Windows环境配置】 <a href="https://www.bilibili.com/video/BV1JP4y1f7q3/?share_source=copy_web&vd_source=70adbb3ab03cac7344c40785632f6bd5">https://www.bilibili.com/video/BV1JP4y1f7q3/?share_source=copy_web&amp;vd_source=70adbb3ab03cac7344c40785632f6bd5</a><br>这个是没有配GPU的</p><h3 id="配置GPU"><a href="#配置GPU" class="headerlink" title="配置GPU"></a>配置GPU</h3><p>CPU和GPU应该都可以，大致的过程是查阅电脑参数并选择<strong>合适自己电脑的CUDA</strong>，我这台是Y7000P RTX3050的，基本上30开头的显卡都是装11版本的CUDA，我装的是11.7CUDA<br>这个up主超级详细，简直是我的大救星！<br>【最详细的 Windows 下 PyTorch 入门深度学习环境安装与配置 CPU GPU 版 | 土堆教程】 <a href="https://www.bilibili.com/video/BV1S5411X7FY/?p=29&share_source=copy_web&vd_source=70adbb3ab03cac7344c40785632f6bd5">https://www.bilibili.com/video/BV1S5411X7FY/?p=29&amp;share_source=copy_web&amp;vd_source=70adbb3ab03cac7344c40785632f6bd5</a></p><h3 id="配置pytorch"><a href="#配置pytorch" class="headerlink" title="配置pytorch"></a>配置pytorch</h3><p>也是看上面这个up主（2022年的），评论也很精华！基本上可以解决，老旧版本的都有。<br>一些坑：</p><ul><li>换源！</li><li>中途因为某个问题我把chardet卸掉了，再装的时候失败，无法登上jupyter notebook，这边试出来是豆瓣网的trust问题，要加–trust参数，这个csdn上输一下报错就有命令的</li></ul><h3 id="conda-pycharm"><a href="#conda-pycharm" class="headerlink" title="conda+pycharm"></a>conda+pycharm</h3><p>高版本的pycharm无法识别本地interpreter，先按默认创个环境，再进setting，python interpreter，选择condabin下的conda.bat（可能anaconda和mini有区别，anaconda可能是exe？），之后load就可以选择自己的环境了。<br><a href="https://blog.csdn.net/qianyunzzz/article/details/122489967">https://blog.csdn.net/qianyunzzz/article/details/122489967</a></p>]]></content>
     
     
     
@@ -21,7 +21,7 @@
     <link href="/2023/09/19/%E5%8E%BB%E7%A7%8D%E8%8A%B1/"/>
     <url>/2023/09/19/%E5%8E%BB%E7%A7%8D%E8%8A%B1/</url>
     
-    <content type="html"><![CDATA[<p>喜欢蝴蝶 别去追逐 去种花<br>站得太久 都忘了自己在等什么<br>离开人群的环绕 方可见到独特风景<br>念旧的人 总是一身狼狈<br>以欢喜之心 渡烟火日常 念别人的好 修自己的心<br>我们还有更长的路要走 不过没关系 路就是生活本身</p>]]></content>
+    <content type="html"><![CDATA[<p>小林老师的随记~</p><h3 id="9-24-Sunday-人间忽晚，山河已秋"><a href="#9-24-Sunday-人间忽晚，山河已秋" class="headerlink" title="9.24 Sunday-人间忽晚，山河已秋"></a>9.24 Sunday-人间忽晚，山河已秋</h3><p>天凉好个秋！</p><h3 id="9-19-Tuseday-幸福不是出门多风光"><a href="#9-19-Tuseday-幸福不是出门多风光" class="headerlink" title="9.19 Tuseday-幸福不是出门多风光"></a>9.19 Tuseday-幸福不是出门多风光</h3><p>喜欢蝴蝶 别去追逐 去种花<br>站得太久 都忘了自己在等什么<br>念旧的人 总是一身狼狈<br>以欢喜之心 渡烟火日常 念别人的好 修自己的心</p>]]></content>
     
     
     
@@ -34,7 +34,7 @@
     <link href="/2023/09/06/%E7%A7%8B%E5%86%AC%E4%BE%9D%E7%84%B6%E7%87%A5%E7%83%AB%E7%9A%84%E7%B4%AB%E9%87%91%E6%B8%AF/"/>
     <url>/2023/09/06/%E7%A7%8B%E5%86%AC%E4%BE%9D%E7%84%B6%E7%87%A5%E7%83%AB%E7%9A%84%E7%B4%AB%E9%87%91%E6%B8%AF/</url>
     
-    <content type="html"><![CDATA[<p>在开学第一课的模电上摸鱼终于配完了环境，此贴随便唠唠大二在zjg的生活~</p><h3 id="在西教"><a href="#在西教" class="headerlink" title="在西教"></a>在西教</h3><p>好安静，感觉没有那么浮躁。<br>楼下咖啡机的巧克力奶针不戳。<br>就是蚊子多了点。<br>看着之前写的下面这篇感觉好尴尬，不知道为啥哈哈哈哈。<br>总感觉自己想表达的表达不出来，写出来又怪怪的。<br>嘎嘎(⊙o⊙)</p><h3 id="谈谈内耗的消极默认设置和无处安放的勇气"><a href="#谈谈内耗的消极默认设置和无处安放的勇气" class="headerlink" title="谈谈内耗的消极默认设置和无处安放的勇气"></a>谈谈内耗的消极默认设置和无处安放的勇气</h3><p>下午的时候，去了yq一趟，在工控新楼的4楼和5楼之间疯狂徘徊，越到楼上，越是感到心跳的加速。从楼道间溢出的讨论声音有一种高高在上的陌生感，能明显地感觉到自己不断地流汗和徘徊。最后像偷了东西一般在511门口瞟了一眼就仓皇地逃离了。<br>我另外不知道的是在我去yq之前，老师终于回信了。<br>这到底算释然，还是下一段内耗的开始。<br>不擅长于表达，不擅长与不同年龄段的人表达，被固有的阶级感绑架，畏畏缩缩，独自臆想，将交流限制在一个小圈子内，不断的将他人的感受和目标看作世界的一切，从而焦虑产生了。<br>我也不知道这是不是年轻人的通病。<br>你看，我又尝试将这种思想普遍化，将它视为某个年龄段必然遇到的什么事情一样。<br>越是这样，好像越容易被利用（PUA），人需要落落大方地表达自己，少一些自卑感，不管是因为学识的，还是因为阶级的。<br>不自卑–这可能就是个体独立性的存在方式。</p>]]></content>
+    <content type="html"><![CDATA[<p>在开学第一课的模电上摸鱼终于配完了环境，此贴随便唠唠大二在zjg的生活~</p><h3 id="找寻安顿的感觉？"><a href="#找寻安顿的感觉？" class="headerlink" title="找寻安顿的感觉？"></a>找寻安顿的感觉？</h3><p>窝在舒适区里安顿一两年<br>某天被外面的世界撞击后就会很迷茫</p><h3 id="在西教"><a href="#在西教" class="headerlink" title="在西教"></a>在西教</h3><p>好安静，感觉没有那么浮躁。<br>楼下咖啡机的巧克力奶针不戳。<br>就是蚊子多了点。<br>嘎嘎(⊙o⊙)</p>]]></content>
     
     
     
