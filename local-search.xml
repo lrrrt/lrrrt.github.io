@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>数学建模的鸭子</title>
+    <link href="/2023/10/06/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%9A%84%E9%B8%AD%E5%AD%90/"/>
+    <url>/2023/10/06/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%9A%84%E9%B8%AD%E5%AD%90/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>学习花书时遇到的坑</title>
+    <link href="/2023/10/06/%E5%AD%A6%E4%B9%A0%E8%8A%B1%E4%B9%A6%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"/>
+    <url>/2023/10/06/%E5%AD%A6%E4%B9%A0%E8%8A%B1%E4%B9%A6%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
+    
+    <content type="html"><![CDATA[<h3 id="module-‘numpy’-has-no-attribute-‘array’"><a href="#module-‘numpy’-has-no-attribute-‘array’" class="headerlink" title="module ‘numpy’ has no attribute ‘array’"></a>module ‘numpy’ has no attribute ‘array’</h3><p>文件命名和模块名冲突<br><a href="https://blog.csdn.net/ajsyipsc40270/article/details/101848237">https://blog.csdn.net/ajsyipsc40270/article/details/101848237</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>配置：pytorch+conda+pycharm</title>
     <link href="/2023/09/24/%E9%85%8D%E7%BD%AE%EF%BC%9Apytorch-conda-pycharm/"/>
     <url>/2023/09/24/%E9%85%8D%E7%BD%AE%EF%BC%9Apytorch-conda-pycharm/</url>
@@ -21,7 +47,7 @@
     <link href="/2023/09/19/%E5%8E%BB%E7%A7%8D%E8%8A%B1/"/>
     <url>/2023/09/19/%E5%8E%BB%E7%A7%8D%E8%8A%B1/</url>
     
-    <content type="html"><![CDATA[<p>小林老师的随记~</p><h3 id="9-24-Sunday-人间忽晚，山河已秋"><a href="#9-24-Sunday-人间忽晚，山河已秋" class="headerlink" title="9.24 Sunday-人间忽晚，山河已秋"></a>9.24 Sunday-人间忽晚，山河已秋</h3><p>天凉好个秋！</p><h3 id="9-19-Tuseday-幸福不是出门多风光"><a href="#9-19-Tuseday-幸福不是出门多风光" class="headerlink" title="9.19 Tuseday-幸福不是出门多风光"></a>9.19 Tuseday-幸福不是出门多风光</h3><p>喜欢蝴蝶 别去追逐 去种花<br>站得太久 都忘了自己在等什么<br>念旧的人 总是一身狼狈<br>以欢喜之心 渡烟火日常 念别人的好 修自己的心</p>]]></content>
+    <content type="html"><![CDATA[<p>小林老师的摘记~</p><h3 id="9-24-Sunday-人间忽晚，山河已秋"><a href="#9-24-Sunday-人间忽晚，山河已秋" class="headerlink" title="9.24 Sunday-人间忽晚，山河已秋"></a>9.24 Sunday-人间忽晚，山河已秋</h3><p>天凉好个秋！</p><h3 id="9-19-Tuseday-幸福不是出门多风光"><a href="#9-19-Tuseday-幸福不是出门多风光" class="headerlink" title="9.19 Tuseday-幸福不是出门多风光"></a>9.19 Tuseday-幸福不是出门多风光</h3><p>喜欢蝴蝶 别去追逐 去种花<br>站得太久 都忘了自己在等什么<br>念旧的人 总是一身狼狈<br>以欢喜之心 渡烟火日常 念别人的好 修自己的心</p>]]></content>
     
     
     
@@ -34,7 +60,7 @@
     <link href="/2023/09/06/%E7%A7%8B%E5%86%AC%E4%BE%9D%E7%84%B6%E7%87%A5%E7%83%AB%E7%9A%84%E7%B4%AB%E9%87%91%E6%B8%AF/"/>
     <url>/2023/09/06/%E7%A7%8B%E5%86%AC%E4%BE%9D%E7%84%B6%E7%87%A5%E7%83%AB%E7%9A%84%E7%B4%AB%E9%87%91%E6%B8%AF/</url>
     
-    <content type="html"><![CDATA[<p>在开学第一课的模电上摸鱼终于配完了环境，此贴随便唠唠大二在zjg的生活~</p><h3 id="找寻安顿的感觉？"><a href="#找寻安顿的感觉？" class="headerlink" title="找寻安顿的感觉？"></a>找寻安顿的感觉？</h3><p>窝在舒适区里安顿一两年<br>某天被外面的世界撞击后就会很迷茫</p><h3 id="在西教"><a href="#在西教" class="headerlink" title="在西教"></a>在西教</h3><p>好安静，感觉没有那么浮躁。<br>楼下咖啡机的巧克力奶针不戳。<br>就是蚊子多了点。<br>嘎嘎(⊙o⊙)</p>]]></content>
+    <content type="html"><![CDATA[<p>在开学第一课的模电上摸鱼终于配完了环境，此贴随便唠唠大二在zjg的生活~</p><h3 id="安顿"><a href="#安顿" class="headerlink" title="安顿"></a>安顿</h3><p>窝在舒适区里安顿一两年<br>某天被外面的世界撞击后就会很迷茫</p><h3 id="在西教"><a href="#在西教" class="headerlink" title="在西教"></a>在西教</h3><p>好安静，感觉没有那么浮躁。<br>楼下咖啡机的巧克力奶针不戳。<br>就是蚊子多了点。<br>嘎嘎(⊙o⊙)</p>]]></content>
     
     
     
