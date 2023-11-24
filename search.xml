@@ -59,18 +59,6 @@
       </tags>
   </entry>
   <entry>
-    <title>学习花书时遇到的坑</title>
-    <url>/2023/10/06/%E5%AD%A6%E4%B9%A0%E8%8A%B1%E4%B9%A6%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
-    <content><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>愚蠢的我正在学习花书，由于知识的不足，对于很多的疑问无法快速地联系到已有或者未有的知识<br>故而挖个坑，或许能够为之后的学习带来灵感，或待积累之后能够有所感悟，回头继续填坑<br>还有一些代码实现的错误也放在这里<br>终旨是为了启发，莫笑</p>
-<h2 id="一些随便的想法"><a href="#一些随便的想法" class="headerlink" title="一些随便的想法"></a>一些随便的想法</h2><h3 id="不同的语言"><a href="#不同的语言" class="headerlink" title="不同的语言"></a>不同的语言</h3><h3 id="过拟合的情景选择"><a href="#过拟合的情景选择" class="headerlink" title="过拟合的情景选择"></a>过拟合的情景选择</h3><p>在有些情境中，过拟合是必要的，有些情景中，过拟合应该被舍弃<br>这是cybernetics的seminar的时候某位老哥带来的启发，工作的时候需要精确，但是快乐冲浪的时候可能就需要random</p>
-<h3 id="坐标轴单位"><a href="#坐标轴单位" class="headerlink" title="坐标轴单位"></a>坐标轴单位</h3><p>坐标轴单位的影响，实际距离与图像距离，x与y的统一？变换坐标？<br>—–后面讲到了：特征缩放，杠杆原理<br>弹幕说是特征归一化，数学建模里有用到？</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="module-‘numpy’-has-no-attribute-‘array’"><a href="#module-‘numpy’-has-no-attribute-‘array’" class="headerlink" title="module ‘numpy’ has no attribute ‘array’"></a>module ‘numpy’ has no attribute ‘array’</h3><p>文件命名和模块名冲突<br><a href="https://blog.csdn.net/ajsyipsc40270/article/details/101848237">https://blog.csdn.net/ajsyipsc40270/article/details/101848237</a></p>
-]]></content>
-      <tags>
-        <tag>学习随记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>电路原理笔记</title>
     <url>/2023/11/20/%E7%94%B5%E8%B7%AF%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="大二秋学期电路原理（控制）笔记"><a href="#大二秋学期电路原理（控制）笔记" class="headerlink" title="大二秋学期电路原理（控制）笔记"></a>大二秋学期电路原理（控制）笔记</h1><p>控制学院5.5学分模电课程的前半部分。</p>
