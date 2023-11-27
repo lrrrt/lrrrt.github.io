@@ -40,25 +40,6 @@
       </tags>
   </entry>
   <entry>
-    <title>配置：pytorch+conda+pycharm</title>
-    <url>/2023/09/24/%E9%85%8D%E7%BD%AE%EF%BC%9Apytorch-conda-pycharm/</url>
-    <content><![CDATA[<h3 id="下载conda"><a href="#下载conda" class="headerlink" title="下载conda"></a>下载conda</h3><p>miniconda和anaconda应该都是可以的，因为花书上是miniconda所以我也是装的miniconda<br>【李沐动手学深度学习Windows环境配置】 <a href="https://www.bilibili.com/video/BV1JP4y1f7q3/?share_source=copy_web&vd_source=70adbb3ab03cac7344c40785632f6bd5">https://www.bilibili.com/video/BV1JP4y1f7q3/?share_source=copy_web&amp;vd_source=70adbb3ab03cac7344c40785632f6bd5</a><br>这个是没有配GPU的</p>
-<h3 id="配置GPU"><a href="#配置GPU" class="headerlink" title="配置GPU"></a>配置GPU</h3><p>CPU和GPU应该都可以，大致的过程是查阅电脑参数并选择<strong>合适自己电脑的CUDA</strong>，我这台是Y7000P RTX3050的，基本上30开头的显卡都是装11版本的CUDA，我装的是11.7CUDA<br>这个up主超级详细，简直是我的大救星！<br>【最详细的 Windows 下 PyTorch 入门深度学习环境安装与配置 CPU GPU 版 | 土堆教程】 <a href="https://www.bilibili.com/video/BV1S5411X7FY/?p=29&share_source=copy_web&vd_source=70adbb3ab03cac7344c40785632f6bd5">https://www.bilibili.com/video/BV1S5411X7FY/?p=29&amp;share_source=copy_web&amp;vd_source=70adbb3ab03cac7344c40785632f6bd5</a></p>
-<h3 id="配置pytorch"><a href="#配置pytorch" class="headerlink" title="配置pytorch"></a>配置pytorch</h3><p>也是看上面这个up主（2022年的），评论也很精华！基本上可以解决，老旧版本的都有。<br>一些坑：</p>
-<ul>
-<li>换源！</li>
-<li>中途因为某个问题我把chardet卸掉了，再装的时候失败，无法登上jupyter notebook，这边试出来是豆瓣网的trust问题，要加–trust参数，这个csdn上输一下报错就有命令的</li>
-</ul>
-<h3 id="conda-pycharm"><a href="#conda-pycharm" class="headerlink" title="conda+pycharm"></a>conda+pycharm</h3><p>高版本的pycharm无法识别本地interpreter，先按默认创个环境，再进setting，python interpreter，选择condabin下的conda.bat（可能anaconda和mini有区别，anaconda可能是exe？），之后load就可以选择自己的环境了。<br><a href="https://blog.csdn.net/qianyunzzz/article/details/122489967">https://blog.csdn.net/qianyunzzz/article/details/122489967</a></p>
-]]></content>
-      <categories>
-        <category>配置备忘录</category>
-      </categories>
-      <tags>
-        <tag>配置</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>模电笔记</title>
     <url>/2023/11/20/%E7%94%B5%E8%B7%AF%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>说明：现在还是习惯纸质，笔记放上来备份，毕竟一张纸一张纸的记录太容易丢了（前面一些课不知道丢了多少了）。</p>
@@ -155,8 +136,44 @@
       </tags>
   </entry>
   <entry>
-    <title>butterfly博客配置小坑备忘</title>
-    <url>/2023/11/24/butterfly%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%B0%8F%E5%9D%91%E5%A4%87%E5%BF%98/</url>
+    <title>Ubuntu双系统配置备忘</title>
+    <url>/2023/11/27/Ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E5%A4%87%E5%BF%98/</url>
+    <content><![CDATA[<h1 id="双系统安装"><a href="#双系统安装" class="headerlink" title="双系统安装"></a>双系统安装</h1><p>按照<a href="https://github.com/qtjdyx/ZJUS.git">教程</a>仔细执行即可。<br>注意事项：</p>
+<ol>
+<li>如果出现安装过程中黑屏的现象，保险起见在插入U盘进入bios选择ubuntu（或者Ubuntu install）选项时即进行以下操作：<ol>
+<li>由于在第一选项只有5-10s的停留时间，先按↓键给自己留点时间</li>
+<li>在<code>Ubuntu</code>或者<code>Ubuntu install</code>选项选中时点击e</li>
+<li>进入黑色的文本编辑页面将<code>quiet splash</code>后的<code>---</code>删去改为<code>quiet splash nomodeset</code></li>
+<li>按F10开机</li>
+</ol>
+</li>
+<li>在磁盘选择时小心选择，一定要选择<code>something else</code>和<code>free space</code>进行操作。</li>
+</ol>
+<h1 id="干净卸载双系统"><a href="#干净卸载双系统" class="headerlink" title="干净卸载双系统"></a>干净卸载双系统</h1><p>参考博客：<a href="https://blog.csdn.net/qq_42257666/article/details/120721561">教你彻底卸载Ubuntu双系统，去污不残留_双系统卸载ubuntu_振华OPPO的博客-CSDN博客</a><br>注意事项：</p>
+<ol>
+<li>记不得哪几个磁盘下载相关软件比如Linux reader，或者排除法，一般那个260M的绝对不要动。</li>
+<li>bios开启顺序记得调整，虽然我有几次重装忘了调顺序也没关系，但是看98上好像有人寄的。</li>
+<li>不要懒而忽略后面的步骤，需要执行到在windows下用diskpart那个步骤</li>
+</ol>
+<h1 id="黑屏解决"><a href="#黑屏解决" class="headerlink" title="黑屏解决"></a>黑屏解决</h1><p>黑屏主要是因为和显卡冲突，也有可能是强制关机，挺玄学的。</p>
+<h2 id="型号说明"><a href="#型号说明" class="headerlink" title="型号说明"></a>型号说明</h2><p>Legion Y7000P IAH7<br>CPU               12th Gen Intel(R) Core(TM)i5-12500H<br>GPU               NVIDIA GeForce RTX 3050 Laptop GPU</p>
+<h2 id="尝试过的方法"><a href="#尝试过的方法" class="headerlink" title="尝试过的方法"></a>尝试过的方法</h2><ol>
+<li>grub：进入<code>/etc/default/grub</code>修改添加<code>nomodeset</code>，无用</li>
+<li>进入<code>/etc/X11/Xorg.conf</code>添加intel device的section，但reboot后始终停留在tty界面，无法进入桌面，两遍尝试<code>lightdm</code>和<code>gdm3</code>始终无用，或黑屏或停留tty</li>
+<li>通过前面说的安装时临时进入的方法（开机选择时按e修改—），从官网下载NVIDIA驱动，输入<code>nvidia-smi</code>命令时可以识别，但是重启后仍然黑屏</li>
+</ol>
+<h2 id="我成功的方案"><a href="#我成功的方案" class="headerlink" title="我成功的方案"></a>我成功的方案</h2><p>来源：<a href="https://www.bilibili.com/video/BV1Mg4y1p7uN/?share_source=copy_web">Ubuntu安装英伟达NVIDIA显卡驱动黑屏99%的解决办法</a><br>可能gdm3和lightdm那里每台电脑有细微区别，总体跟着操作，目前重启了几次都没有黑屏问题了。<br>等我补完大物作业再来把步骤写成文字。</p>
+]]></content>
+      <categories>
+        <category>配置备忘录</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>butterfly博客配置备忘</title>
+    <url>/2023/11/24/butterfly%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%A4%87%E5%BF%98/</url>
     <content><![CDATA[<h2 id="花瓣飘落调整"><a href="#花瓣飘落调整" class="headerlink" title="花瓣飘落调整"></a>花瓣飘落调整</h2><h3 id="花瓣数量和速度减小"><a href="#花瓣数量和速度减小" class="headerlink" title="花瓣数量和速度减小"></a>花瓣数量和速度减小</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for (var i = 0; i &lt; 30; i++) &#123;</span><br><span class="line">        var sakura, randomX, randomY, randomS, randomR, randomFnx, randomFny;</span><br><span class="line">        randomX = getRandom(&#x27;x&#x27;);</span><br><span class="line">        randomY = getRandom(&#x27;y&#x27;);</span><br><span class="line">        randomR = getRandom(&#x27;r&#x27;);</span><br><span class="line">        randomS = getRandom(&#x27;s&#x27;)*0.5;</span><br><span class="line">        randomFnx = getRandom(&#x27;fnx&#x27;);</span><br><span class="line">        randomFny = getRandom(&#x27;fny&#x27;);</span><br><span class="line">        randomFnR = getRandom(&#x27;fnr&#x27;);</span><br><span class="line">        sakura = new Sakura(randomX, randomY, randomS, randomR, &#123;</span><br><span class="line">            x: randomFnx,</span><br><span class="line">            y: randomFny,</span><br><span class="line">            r: randomFnR</span><br><span class="line">        &#125;);</span><br><span class="line">        sakura.draw(cxt);</span><br><span class="line">        sakuraList.push(sakura);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="花瓣和文章卡片的覆盖顺序"><a href="#花瓣和文章卡片的覆盖顺序" class="headerlink" title="花瓣和文章卡片的覆盖顺序"></a>花瓣和文章卡片的覆盖顺序</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas.setAttribute(&#x27;style&#x27;, &#x27;position: fixed;left: 0;top: 0;z-index: -1;background-color: transparent;&#x27;);</span><br><span class="line">// canvas.setAttribute(&#x27;style&#x27;, &#x27;position: fixed;left: 0;top: 0;pointer-events: none;&#x27;);</span><br></pre></td></tr></table></figure>
 <h2 id="文章上锁"><a href="#文章上锁" class="headerlink" title="文章上锁"></a>文章上锁</h2><p>来源：<a href="https://zhuanlan.zhihu.com/p/113235573">https://zhuanlan.zhihu.com/p/113235573</a></p>
@@ -170,7 +187,26 @@
         <category>配置备忘录</category>
       </categories>
       <tags>
-        <tag>博客配置</tag>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pytorch+conda+pycharm配置备忘</title>
+    <url>/2023/09/24/pytorch-conda-pycharm%E9%85%8D%E7%BD%AE%E5%A4%87%E5%BF%98/</url>
+    <content><![CDATA[<h3 id="下载conda"><a href="#下载conda" class="headerlink" title="下载conda"></a>下载conda</h3><p>miniconda和anaconda应该都是可以的，因为花书上是miniconda所以我也是装的miniconda<br>【李沐动手学深度学习Windows环境配置】 <a href="https://www.bilibili.com/video/BV1JP4y1f7q3/?share_source=copy_web&vd_source=70adbb3ab03cac7344c40785632f6bd5">https://www.bilibili.com/video/BV1JP4y1f7q3/?share_source=copy_web&amp;vd_source=70adbb3ab03cac7344c40785632f6bd5</a><br>这个是没有配GPU的</p>
+<h3 id="配置GPU"><a href="#配置GPU" class="headerlink" title="配置GPU"></a>配置GPU</h3><p>CPU和GPU应该都可以，大致的过程是查阅电脑参数并选择<strong>合适自己电脑的CUDA</strong>，我这台是Y7000P RTX3050的，基本上30开头的显卡都是装11版本的CUDA，我装的是11.7CUDA<br>这个up主超级详细，简直是我的大救星！<br>【最详细的 Windows 下 PyTorch 入门深度学习环境安装与配置 CPU GPU 版 | 土堆教程】 <a href="https://www.bilibili.com/video/BV1S5411X7FY/?p=29&share_source=copy_web&vd_source=70adbb3ab03cac7344c40785632f6bd5">https://www.bilibili.com/video/BV1S5411X7FY/?p=29&amp;share_source=copy_web&amp;vd_source=70adbb3ab03cac7344c40785632f6bd5</a></p>
+<h3 id="配置pytorch"><a href="#配置pytorch" class="headerlink" title="配置pytorch"></a>配置pytorch</h3><p>也是看上面这个up主（2022年的），评论也很精华！基本上可以解决，老旧版本的都有。<br>一些坑：</p>
+<ul>
+<li>换源！</li>
+<li>中途因为某个问题我把chardet卸掉了，再装的时候失败，无法登上jupyter notebook，这边试出来是豆瓣网的trust问题，要加–trust参数，这个csdn上输一下报错就有命令的</li>
+</ul>
+<h3 id="conda-pycharm"><a href="#conda-pycharm" class="headerlink" title="conda+pycharm"></a>conda+pycharm</h3><p>高版本的pycharm无法识别本地interpreter，先按默认创个环境，再进setting，python interpreter，选择condabin下的conda.bat（可能anaconda和mini有区别，anaconda可能是exe？），之后load就可以选择自己的环境了。<br><a href="https://blog.csdn.net/qianyunzzz/article/details/122489967">https://blog.csdn.net/qianyunzzz/article/details/122489967</a></p>
+]]></content>
+      <categories>
+        <category>配置备忘录</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
       </tags>
   </entry>
 </search>
