@@ -72,14 +72,14 @@
   <entry>
     <title>pytorch+conda+pycharm配置备忘</title>
     <url>/2023/09/24/pytorch-conda-pycharm%E9%85%8D%E7%BD%AE%E5%A4%87%E5%BF%98/</url>
-    <content><![CDATA[<h3 id="下载conda"><a href="#下载conda" class="headerlink" title="下载conda"></a>下载conda</h3><p>miniconda和anaconda应该都是可以的，因为花书上是miniconda所以我也是装的miniconda<br>【李沐动手学深度学习Windows环境配置】 <a href="https://www.bilibili.com/video/BV1JP4y1f7q3/?share_source=copy_web&vd_source=70adbb3ab03cac7344c40785632f6bd5">https://www.bilibili.com/video/BV1JP4y1f7q3/?share_source=copy_web&amp;vd_source=70adbb3ab03cac7344c40785632f6bd5</a><br>这个是没有配GPU的</p>
-<h3 id="配置GPU"><a href="#配置GPU" class="headerlink" title="配置GPU"></a>配置GPU</h3><p>CPU和GPU应该都可以，大致的过程是查阅电脑参数并选择<strong>合适自己电脑的CUDA</strong>，我这台是Y7000P RTX3050的，基本上30开头的显卡都是装11版本的CUDA，我装的是11.7CUDA<br>这个up主超级详细，简直是我的大救星！<br>【最详细的 Windows 下 PyTorch 入门深度学习环境安装与配置 CPU GPU 版 | 土堆教程】 <a href="https://www.bilibili.com/video/BV1S5411X7FY/?p=29&share_source=copy_web&vd_source=70adbb3ab03cac7344c40785632f6bd5">https://www.bilibili.com/video/BV1S5411X7FY/?p=29&amp;share_source=copy_web&amp;vd_source=70adbb3ab03cac7344c40785632f6bd5</a></p>
+    <content><![CDATA[<h3 id="下载conda"><a href="#下载conda" class="headerlink" title="下载conda"></a>下载conda</h3><p>miniconda和anaconda应该都是可以的，因为花书上是miniconda所以我也是装的miniconda<br><a href="https://www.bilibili.com/video/BV1JP4y1f7q3">李沐动手学深度学习Windows环境配置</a><br>这个是没有配GPU的</p>
+<h3 id="配置GPU"><a href="#配置GPU" class="headerlink" title="配置GPU"></a>配置GPU</h3><p>CPU和GPU应该都可以，大致的过程是查阅电脑参数并选择<strong>合适自己电脑的CUDA</strong>，我这台是Y7000P RTX3050的，基本上30开头的显卡都是装11版本的CUDA，我装的是11.7CUDA<br>这个up主超级详细，简直是我的大救星！<br><a href="https://www.bilibili.com/video/BV1S5411X7FY">最详细的 Windows 下 PyTorch 入门深度学习环境安装与配置 CPU GPU 版 | 土堆教程</a></p>
 <h3 id="配置pytorch"><a href="#配置pytorch" class="headerlink" title="配置pytorch"></a>配置pytorch</h3><p>也是看上面这个up主（2022年的），评论也很精华！基本上可以解决，老旧版本的都有。<br>一些坑：</p>
 <ul>
 <li>换源！</li>
 <li>中途因为某个问题我把chardet卸掉了，再装的时候失败，无法登上jupyter notebook，这边试出来是豆瓣网的trust问题，要加–trust参数，这个csdn上输一下报错就有命令的</li>
 </ul>
-<h3 id="conda-pycharm"><a href="#conda-pycharm" class="headerlink" title="conda+pycharm"></a>conda+pycharm</h3><p>高版本的pycharm无法识别本地interpreter，先按默认创个环境，再进setting，python interpreter，选择condabin下的conda.bat（可能anaconda和mini有区别，anaconda可能是exe？），之后load就可以选择自己的环境了。<br><a href="https://blog.csdn.net/qianyunzzz/article/details/122489967">https://blog.csdn.net/qianyunzzz/article/details/122489967</a></p>
+<h3 id="conda-pycharm"><a href="#conda-pycharm" class="headerlink" title="conda+pycharm"></a>conda+pycharm</h3><p>高版本的pycharm无法识别本地interpreter，先按默认创个环境，再进setting，python interpreter，选择condabin下的conda.bat（可能anaconda和mini有区别，anaconda可能是exe？），之后load就可以选择自己的环境了。<br><a href="https://blog.csdn.net/qianyunzzz/article/details/122489967">高版本pycharm配置</a></p>
 ]]></content>
       <categories>
         <category>配置备忘录</category>
