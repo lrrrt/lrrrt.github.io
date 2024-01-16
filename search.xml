@@ -209,7 +209,7 @@
 </ol>
 <h1 id="DAG"><a href="#DAG" class="headerlink" title="DAG"></a>DAG</h1><h2 id="AOE-network"><a href="#AOE-network" class="headerlink" title="AOE network"></a>AOE network</h2><p><strong>Example</strong><br>scheduling a project</p>
 <ul>
-<li>Dummy Node: A——-&gt;B——&gt;C<br>B does not need to be done before A<br>Both tasks A and B must be completed before task C can be started</li>
+<li>Dummy Node: A- - - -&gt;B——&gt;C<br>B does not need to be done before A<br>Both tasks A and B must be completed before task C can be started</li>
 <li>EC time(earlist time): EC[W]&#x3D;max(EC[V]+Cvw)</li>
 <li>LC time(latest time): LC[V]&#x3D;min(LC[W]-Cvw)<br><code>(V is predecessor of W)</code></li>
 <li>Critical Path: the edges that have 0 slack time</li>
