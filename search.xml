@@ -205,7 +205,7 @@
 <p>How to determine whether a graph has a negative cycle?</p>
 <ol>
 <li>add an array called <code>cnt</code>, update <code>cnt[W]=cnt[V]+1</code> during relaxation step</li>
-<li>If, at any point, there exists<code> cnt==NumVertex</code>, it indicates the presence of a negative cycle. This is because in a graph without cycles, the maximum possible value for cnt would be NumVertex - 1.</li>
+<li>If, at any point, there exists<code>cnt==NumVertex</code>, it indicates the presence of a negative cycle. This is because in a graph without cycles, the maximum possible value for cnt would be NumVertex - 1.</li>
 </ol>
 <h1 id="DAG"><a href="#DAG" class="headerlink" title="DAG"></a>DAG</h1><h2 id="AOE-network"><a href="#AOE-network" class="headerlink" title="AOE network"></a>AOE network</h2><p><strong>Example</strong><br>scheduling a project</p>
 <ul>
