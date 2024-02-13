@@ -11,7 +11,7 @@
 <li>按F10开机</li>
 </ul>
 </li>
-<li>在磁盘选择时小心选择，一定要选择<code>something else</code>和<code>free space</code>进行操作。</li>
+<li>在磁盘选择时一定要选择<code>something else</code>和<code>free space</code>进行操作。</li>
 </ol>
 <h1 id="干净卸载双系统"><a href="#干净卸载双系统" class="headerlink" title="干净卸载双系统"></a>干净卸载双系统</h1><p>参考博客：<a href="https://blog.csdn.net/qq_42257666/article/details/120721561">教你彻底卸载Ubuntu双系统，去污不残留_双系统卸载ubuntu_振华OPPO的博客-CSDN博客</a></p>
 <h2 id="注意事项：-1"><a href="#注意事项：-1" class="headerlink" title="注意事项："></a>注意事项：</h2><ol>
@@ -19,7 +19,7 @@
 <li>Bios开启顺序记得将windows调整至首位，虽然我有几次重装忘了调顺序也没关系，但是看98上好像有人寄的。</li>
 <li>在格式化完磁盘以后不要偷懒而忽略后面的步骤，需要执行到在windows下用diskpart那个步骤</li>
 </ol>
-<h1 id="黑屏解决"><a href="#黑屏解决" class="headerlink" title="黑屏解决"></a>黑屏解决</h1><p>黑屏主要是因为和显卡冲突，也有可能是强制关机，fcitx输入法框架冲突之类的，挺玄学的。我的主要矛盾是显卡。</p>
+<h1 id="黑屏解决"><a href="#黑屏解决" class="headerlink" title="黑屏解决"></a>黑屏解决</h1><p>黑屏主要是因为和显卡冲突，也有可能是强制关机，fcitx输入法框架冲突之类的（所以我现在ubuntu下的输入法是一坨，有好用的戳戳我呗），挺玄学的。我的主要矛盾是显卡。</p>
 <h2 id="型号说明"><a href="#型号说明" class="headerlink" title="型号说明"></a>型号说明</h2><p>Legion Y7000P IAH7<br>CPU               12th Gen Intel(R) Core(TM)i5-12500H<br>GPU               NVIDIA GeForce RTX 3050 Laptop GPU</p>
 <h2 id="尝试过的方法"><a href="#尝试过的方法" class="headerlink" title="尝试过的方法"></a>尝试过的方法</h2><p>本台电脑在以下方法都失败了：</p>
 <ol>
@@ -40,7 +40,10 @@
 <li>安装显卡管理应用。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install nvidia-settings nvidia-prime</span><br></pre></td></tr></table></figure></li>
 <li>打开NVIDIA X Server Settings，转到Prime Profiles，换到性能模式Performance Mode，再重启电脑。</li>
 </ol>
-<h1 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h1><p>网络上的教程千千万，适合电脑的难说。很后悔以前没有记录配置wsl2远程桌面时候的操作。印象里也是有类似的问题，远程连接一直是黑屏。大概是从配完wsl的远程桌面（挺恶心的）以后起才开始留意记录配置教程指路这件事情。<br>很久没用wsl了，扔个用户名防止我忘了它（lrt_ros）</p>
+<h1 id="CUDA和CUDNN"><a href="#CUDA和CUDNN" class="headerlink" title="CUDA和CUDNN"></a>CUDA和CUDNN</h1><p>安装基本按教程走没问题（嘉创飞航平台的指导书《多旋翼无人机系列教材UE-01F实验指导书》）<br>就是检查cudnn的版本的方法太老了，应该执行（cuda的版本自己看）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /usr/local/cuda-xx.x/include/cudnn_version.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure>
+
+<h1 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h1><p>很后悔以前没有记录配置wsl2远程桌面时候的操作。印象里也是有类似的问题，远程连接一直是黑屏，那时候好像就gdm3和lightdm二选一碰运气来着（笑）。大概是从配完wsl的远程桌面（挺恶心的）以后起才开始留意记录配置教程指路这件事情。<br>很久没用wsl了，扔个用户名防止我忘了它（lrt_ros）</p>
 ]]></content>
       <categories>
         <category>配置备忘录</category>
@@ -305,7 +308,7 @@
 <h2 id="课堂笔记"><a href="#课堂笔记" class="headerlink" title="课堂笔记"></a>课堂笔记</h2>
 
 	<div class="row">
-    <embed src="/pdf/电路笔记.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="/pdf/电路原理.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
@@ -335,7 +338,6 @@
 <li>三极管作恒电流源，如果感觉算不出来看看是不是落下了rce（rce是用电路原理推的，会忽略第二项），注意rce和rbe不要搞混</li>
 <li>rbe一般对管相等，但是下面的恒流源不要脑子抽了直接拿上面的用，所以建议算完静态直接把所有管子的rbe都列一下</li>
 <li>集成运放在线性工作区时，同相输入端和反相输入端电位差大致为零，但是在非线性放大区就不是了；而iin在非线性和线性放大区都是0</li>
-<li><img src="/image.png" alt="Alt text"></li>
 <li>纵坐标是环路增益还是开环增益</li>
 </ol>
 <h3 id="作业题总结（不全）"><a href="#作业题总结（不全）" class="headerlink" title="作业题总结（不全）"></a>作业题总结（不全）</h3><ol>
@@ -388,7 +390,6 @@
 </li>
 <li>FET<ul>
 <li>恒流区工作条件两项检查：（学习BJT的辨别，记是没用的，要看符号）</li>
-<li><img src="/image-1.png" alt="Alt text"></li>
 <li>怎么改？ 改变偏置方式：固定？自给？混合？ 改变电阻位置：上拉？下拉？ 改变直流偏置电源正负</li>
 </ul>
 </li>
@@ -459,7 +460,7 @@
 <h2 id="整理笔记"><a href="#整理笔记" class="headerlink" title="整理笔记"></a>整理笔记</h2><h3 id="器件部分"><a href="#器件部分" class="headerlink" title="器件部分"></a>器件部分</h3>
 
 	<div class="row">
-    <embed src="/pdf/器件部分.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="/pdf/器件.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
