@@ -40,10 +40,27 @@
 <li>安装显卡管理应用。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install nvidia-settings nvidia-prime</span><br></pre></td></tr></table></figure></li>
 <li>打开NVIDIA X Server Settings，转到Prime Profiles，换到性能模式Performance Mode，再重启电脑。</li>
 </ol>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>很后悔以前没有记录配置wsl2远程桌面时候的操作。印象里也是有类似的问题，远程连接一直是黑屏，那时候好像就gdm3和lightdm二选一碰运气来着（笑）。大概是从配完wsl的远程桌面（挺恶心的）以后起才开始留意记录配置教程指路这件事情。<br>很久没用wsl了，扔个用户名防止我忘了它（lrt_ros）</p>
 <h1 id="CUDA和CUDNN"><a href="#CUDA和CUDNN" class="headerlink" title="CUDA和CUDNN"></a>CUDA和CUDNN</h1><p>安装基本按教程走没问题（嘉创飞航平台的指导书《多旋翼无人机系列教材UE-01F实验指导书》）<br>就是检查cudnn的版本的方法太老了，应该执行（cuda的版本自己看）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /usr/local/cuda-xx.x/include/cudnn_version.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure>
 
-<h1 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h1><p>很后悔以前没有记录配置wsl2远程桌面时候的操作。印象里也是有类似的问题，远程连接一直是黑屏，那时候好像就gdm3和lightdm二选一碰运气来着（笑）。大概是从配完wsl的远程桌面（挺恶心的）以后起才开始留意记录配置教程指路这件事情。<br>很久没用wsl了，扔个用户名防止我忘了它（lrt_ros）</p>
+<h1 id="OPENCV"><a href="#OPENCV" class="headerlink" title="OPENCV"></a>OPENCV</h1><h2 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h2><p>可以多看几篇博客里的依赖项，都装装，不嫌多，比如：<br><a href="https://blog.csdn.net/weixin_44796670/article/details/115900538">https://blog.csdn.net/weixin_44796670/article/details/115900538</a></p>
+<h2 id="下载OPENCV安装包和contrib"><a href="#下载OPENCV安装包和contrib" class="headerlink" title="下载OPENCV安装包和contrib"></a>下载OPENCV安装包和contrib</h2><p>这里注意两个包版本对上，然后重命名为opencv_contrib和opencv，然后将opencv_trib放到opencv文件下，然后执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd opencv</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure>
+<h2 id="大概率会缺的东西（不要执行，只是做说明）"><a href="#大概率会缺的东西（不要执行，只是做说明）" class="headerlink" title="大概率会缺的东西（不要执行，只是做说明）"></a>大概率会缺的东西（不要执行，只是做说明）</h2><p>如果按照某些教程直接走的话，大概率会遇到这几个问题：</p>
+<ol>
+<li>安装OpenCV时提示缺少boostdesc_bgm.i文件：<a href="https://blog.csdn.net/AlexWang30/article/details/99612188">https://blog.csdn.net/AlexWang30/article/details/99612188</a></li>
+<li>找不到 feature2d&#x2F;test&#x2F;test_detectors_regression.impl.hpp 文件：<a href="https://blog.csdn.net/xiewenrui1996/article/details/108683866">https://blog.csdn.net/xiewenrui1996/article/details/108683866</a></li>
+<li>可能还会有比较小众的问题，比如最后都[100%]了，还一大堆phase unwrapping之类的，忘了<br>前两个还好，第三个根本找不到办法，估计是因为中途加上了boostdesc_bgm.i等文件然后cmake选项之类的问题，我也不清楚，就是连坐出来的问题吧，所以建议把缺的都补上了再开始cmake</li>
+</ol>
+<h2 id="真正做的编译准备和命令"><a href="#真正做的编译准备和命令" class="headerlink" title="真正做的编译准备和命令"></a>真正做的编译准备和命令</h2><ol>
+<li>先按照 <a href="https://blog.csdn.net/AlexWang30/article/details/99612188">https://blog.csdn.net/AlexWang30/article/details/99612188</a> 把所有缺失的文件下载下来放到opencv_contrib&#x2F;modules&#x2F;xfeatures2d&#x2F;src&#x2F;下</li>
+<li>把opencv &#x2F; modules &#x2F; features2d复制粘贴到build目录下</li>
+<li>在build目录下执行<code>cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=YES -D OPENCV_EXTRA_MODULES_PATH=/home/主机登录名/opencv/opencv_contrib-master/modules ..</code> ，这里-D OPENCV_GENERATE_PKGCONFIG&#x3D;YES是因为OpenCV4以上默认不使用pkg-config，该编译选项开启生成opencv4.pc文件，支持pkg-config功能</li>
+<li>完成后执行<code>sudo make -j8</code>（-j8是根据电脑配置添加上的参数，8代表为处理器8线程，可以省略）</li>
+<li><code>sudo make install</code></li>
+</ol>
+<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>后面跟网上走没啥问题，参考博客找不到了。</p>
 ]]></content>
       <categories>
         <category>配置备忘录</category>
