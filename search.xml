@@ -57,7 +57,7 @@
 <h2 id="真正做的编译准备和命令"><a href="#真正做的编译准备和命令" class="headerlink" title="真正做的编译准备和命令"></a>真正做的编译准备和命令</h2><ol>
 <li>先按照 <a href="https://blog.csdn.net/AlexWang30/article/details/99612188">https://blog.csdn.net/AlexWang30/article/details/99612188</a> 把所有缺失的文件下载下来放到opencv_contrib&#x2F;modules&#x2F;xfeatures2d&#x2F;src&#x2F;下</li>
 <li>把opencv &#x2F; modules &#x2F; features2d复制粘贴到build目录下</li>
-<li>在build目录下执行<code>cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=YES -D OPENCV_EXTRA_MODULES_PATH=/home/主机登录名/opencv/opencv_contrib-master/modules ..</code> ，这里-D OPENCV_GENERATE_PKGCONFIG&#x3D;YES是因为OpenCV4以上默认不使用pkg-config，该编译选项开启生成opencv4.pc文件，支持pkg-config功能</li>
+<li>在build目录下执行<code>cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=YES -D OPENCV_EXTRA_MODULES_PATH=/home/主机登录名/opencv/opencv_contrib/modules ..</code> ，这里-D OPENCV_GENERATE_PKGCONFIG&#x3D;YES是因为OpenCV4以上默认不使用pkg-config，该编译选项开启生成opencv4.pc文件，支持pkg-config功能</li>
 <li>完成后执行<code>sudo make -j8</code>（-j8是根据电脑配置添加上的参数，8代表为处理器8线程，可以省略）</li>
 <li><code>sudo make install</code></li>
 </ol>
