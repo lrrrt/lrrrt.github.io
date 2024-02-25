@@ -72,8 +72,9 @@
 <ol>
 <li><a href="https://blog.csdn.net/qq_43697649/article/details/104502113">https://blog.csdn.net/qq_43697649/article/details/104502113</a></li>
 <li><a href="https://blog.csdn.net/quicmous/article/details/113432144">https://blog.csdn.net/quicmous/article/details/113432144</a></li>
-<li><a href="https://www.cnblogs.com/happyamyhope/p/16480794.html">https://www.cnblogs.com/happyamyhope/p/16480794.html</a><br>综合一下，我是把2中的代码直接替换我的image_opencv.cpp，执行测试的时候发现我脸蓝了，狗灰了，按照3中将将 image_to_mat函数中的<code>float val = im.data[c*im.h*im.w + y*im.w + x];</code>替换为<code>float val = copy.data[c*im.h*im.w + y*im.w + x];</code>，顺利通过~。</li>
+<li><a href="https://www.cnblogs.com/happyamyhope/p/16480794.html">https://www.cnblogs.com/happyamyhope/p/16480794.html</a></li>
 </ol>
+<p>综合一下，我是把2中的代码直接替换我的image_opencv.cpp，执行测试的时候发现我脸蓝了，狗灰了，按照3中将将 image_to_mat函数中的<code>float val = im.data[c*im.h*im.w + y*im.w + x];</code>替换为<code>float val = copy.data[c*im.h*im.w + y*im.w + x];</code>，顺利通过~。</p>
 <h1 id="px4"><a href="#px4" class="headerlink" title="px4"></a>px4</h1><p><strong>【自用，写的很乱】</strong></p>
 <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p><a href="https://blog.csdn.net/HuangChen666/article/details/128754106">https://blog.csdn.net/HuangChen666/article/details/128754106</a><br><a href="https://zhuanlan.zhihu.com/p/546055816">https://zhuanlan.zhihu.com/p/546055816</a><br>基本是按第一个博客来的，出的问题主要是clone不完整。</p>
 <ol>
@@ -82,11 +83,11 @@
 <li>端口不存在的问题FCU: DeviceError:serial:open: No such file or directory（没连硬件）不是什么大问题，中间也遇到了，博客园有篇<a href="https://www.cnblogs.com/soapen/articles/17342907.html#3mavros%E5%AE%89%E8%A3%85">https://www.cnblogs.com/soapen/articles/17342907.html#3mavros%E5%AE%89%E8%A3%85</a> ，没有亲测过。</li>
 </ol>
 <p>总之最后就是按2所示，重新clone，不checkout，mv，reboot，最后测试可以参考<a href="https://zhuanlan.zhihu.com/p/438699349">https://zhuanlan.zhihu.com/p/438699349</a></p>
-<h2 id="第一次配"><a href="#第一次配" class="headerlink" title="第一次配"></a>第一次配</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/PX4/PX4-Autopilot.git --recursive</span><br><span class="line">cd PX4-Autopilot/</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">mv PX4-Autopilot PX4_Firmware</span><br><span class="line">cd PX4_Firmware</span><br><span class="line">bash ./Tools/setup/ubuntu.sh</span><br><span class="line">//reboot</span><br><span class="line">make px4_sitl_default gazebo</span><br></pre></td></tr></table></figure>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/PX4/PX4-Autopilot.git --recursive</span><br><span class="line">cd PX4-Autopilot/</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">// 这一步做完以后一定查看是否有没clone完的情况</span><br><span class="line">// 第一次配由于各种问题，发现需要重命名，不知道为什么</span><br><span class="line">// 第二次配我没有重命名，后面配环境变量的时候也注意一下</span><br><span class="line">mv PX4-Autopilot PX4_Firmware</span><br><span class="line">cd PX4_Firmware</span><br><span class="line">bash ./Tools/setup/ubuntu.sh</span><br><span class="line">//reboot</span><br><span class="line">make px4_sitl_default gazebo</span><br></pre></td></tr></table></figure>
 <p>成功后配置环境变量（可以take off）</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit ~/.bashrc</span><br><span class="line">//加这几句在后面</span><br><span class="line">source ~/PX4_Firmware/Tools/simulation/gazebo-classic/setup_gazebo.bash ~/PX4_Firmware ~/PX4_Firmware/build/px4_sitl_default</span><br><span class="line">export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/PX4_Firmware</span><br><span class="line">export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/PX4_Firmware/Tools/simulation/gazebo-classic/sitl_gazebo-classic</span><br></pre></td></tr></table></figure>
 
-<h2 id="碎话"><a href="#碎话" class="headerlink" title="碎话"></a>碎话</h2><p>我全忘了啊，刚切到windows下脑子就乱了，make的测试也有点乱了，好像两个来着？反正重要的是别checkout，记得mv（好像不mv也没事，两次配的时候问题不太一样）。<br>总之看清楚报错，没正常显示又没出红字的更容易忽略了。</p>
+<h2 id="碎话"><a href="#碎话" class="headerlink" title="碎话"></a>碎话</h2><p>我全忘了啊，刚切到windows下脑子就乱了，make的测试也有点乱了，好像两个来着？反正重要的是别checkout。<br>总之看清楚报错，没正常显示又没出红字的更容易忽略了（clone）。</p>
 ]]></content>
       <categories>
         <category>配置备忘录</category>
