@@ -5,59 +5,91 @@
     <url>/2023/11/27/Ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E5%A4%87%E5%BF%98/</url>
     <content><![CDATA[<p>相当于配置教程的一些指路，做个备忘，如果和前辈的内容重复都是我抄的，侵联删。</p>
 <h1 id="双系统安装"><a href="#双系统安装" class="headerlink" title="双系统安装"></a>双系统安装</h1><p>按照<a href="https://github.com/qtjdyx/ZJUS.git">教程</a>仔细执行即可。</p>
-<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><ol>
-<li>如果出现安装过程中黑屏的现象，保险起见在插入U盘后进入Bios选择Ubuntu（或者Ubuntu install）选项时即进行以下操作：<ul>
+<h2 id="黑屏问题"><a href="#黑屏问题" class="headerlink" title="黑屏问题"></a>黑屏问题</h2><h3 id="黑屏原因和场景"><a href="#黑屏原因和场景" class="headerlink" title="黑屏原因和场景"></a>黑屏原因和场景</h3><ul>
+<li>黑屏原因：主要是因为和显卡冲突，也有可能是强制关机，fcitx输入法框架冲突之类的，挺玄学的。我的主要矛盾是显卡。</li>
+<li>黑屏场景：①安装时黑屏 ②安装完后使用时黑屏 两种场景我都出现过，①Alienware和Legion安装时都出现过，②目前是只出现在Legion的电脑上</li>
+<li>型号说明：虽然装过两台，不过型号都是i5+3050（穷）</li>
+</ul>
+<h3 id="黑屏解决"><a href="#黑屏解决" class="headerlink" title="黑屏解决"></a>黑屏解决</h3><ol>
+<li>安装过程中黑屏的现象：<br>插入U盘后（或者是已经出现了黑屏，重启电脑后）进入Bios选择Ubuntu（或者Ubuntu install）进行以下操作<ul>
 <li>在<code>Ubuntu</code>或者<code>Ubuntu install</code>选项选中时按下e</li>
 <li>进入黑色的文本编辑页面将<code>quiet splash</code>后的<code>---</code>删去改为<code>quiet splash nomodeset</code></li>
-<li>按F10开机</li>
+<li>按F10开机（vary from PC 2 PC）</li>
 </ul>
 </li>
-<li>在磁盘选择时一定要选择<code>something else</code>和<code>free space</code>进行操作。</li>
-</ol>
-<h1 id="干净卸载双系统"><a href="#干净卸载双系统" class="headerlink" title="干净卸载双系统"></a>干净卸载双系统</h1><p>参考博客：<a href="https://blog.csdn.net/qq_42257666/article/details/120721561">教你彻底卸载Ubuntu双系统，去污不残留_双系统卸载ubuntu_振华OPPO的博客-CSDN博客</a></p>
-<h2 id="注意事项：-1"><a href="#注意事项：-1" class="headerlink" title="注意事项："></a>注意事项：</h2><ol>
-<li>记不得哪几个磁盘是linux相关的话还是下载相关软件比如Linux reader进行查看，或者排除法，一般那个260M的绝对不要动。不然就是windows寄掉。</li>
-<li>Bios开启顺序记得将windows调整至首位，虽然我有几次重装忘了调顺序也没关系，但是看98上好像有人寄的。</li>
-<li>在格式化完磁盘以后不要偷懒而忽略后面的步骤，需要执行到在windows下用diskpart那个步骤</li>
-</ol>
-<h1 id="黑屏解决"><a href="#黑屏解决" class="headerlink" title="黑屏解决"></a>黑屏解决</h1><p>黑屏主要是因为和显卡冲突，也有可能是强制关机，fcitx输入法框架冲突之类的（所以我现在ubuntu下的输入法是一坨，有好用的戳戳我呗），挺玄学的。我的主要矛盾是显卡。</p>
-<h2 id="型号说明"><a href="#型号说明" class="headerlink" title="型号说明"></a>型号说明</h2><p>Legion Y7000P IAH7<br>CPU               12th Gen Intel(R) Core(TM)i5-12500H<br>GPU               NVIDIA GeForce RTX 3050 Laptop GPU</p>
-<h2 id="尝试过的方法"><a href="#尝试过的方法" class="headerlink" title="尝试过的方法"></a>尝试过的方法</h2><p>本台电脑在以下方法都失败了：</p>
-<ol>
-<li><strong>临时修改grub</strong>：在<code>Ubuntu</code>或者<code>Ubuntu install</code>选项选中时按下e<br>进入文本编辑页面将<code>quiet splash</code>后的<code>---</code>删去改为<code>quiet splash nomodeset</code>。</li>
-<li><strong>root下修改grub</strong>：在开机选择页面进入Ubuntu高级选项，在recovery的root下通过vim编辑<code>/etc/default/grub</code>，将<code>quiet splash</code>改为<code>quiet splash nomodeset</code>，结果是开机黑屏或者光标停止闪烁。</li>
-<li><strong>添加intel核显</strong>：进入<code>/etc/X11/Xorg.conf</code>添加intel device的section，但reboot后始终停留在tty界面，无法进入桌面，两遍尝试<code>lightdm</code>和<code>gdm3</code>始终无用，或黑屏或停留tty。</li>
-<li><strong>官网下载驱动</strong>：通过临时修改grub进入的方法进入正常的图形化桌面，从官网下载NVIDIA驱动，输入<code>nvidia-smi</code>命令时可以识别，<code>software and updates</code>中也能识别强制添加的addtional driver，但是重启后仍然黑屏。</li>
-</ol>
-<h2 id="我成功的方案"><a href="#我成功的方案" class="headerlink" title="我成功的方案"></a>我成功的方案</h2><p>教程指路：<a href="https://www.bilibili.com/video/BV1Mg4y1p7uN/?share_source=copy_web">Ubuntu安装英伟达NVIDIA显卡驱动黑屏99%的解决办法</a><br>主要步骤（来自上面的视频，此处仅作整理，侵联删）：</p>
-<ol>
-<li>重装ubuntu，通过临时修改grub添加nomodeset的方法进入到图形界面。</li>
+<li>安装完成后某一天突然黑屏：<br>教程指路：<a href="https://www.bilibili.com/video/BV1Mg4y1p7uN">Ubuntu安装英伟达NVIDIA显卡驱动黑屏99%的解决办法</a><br>主要步骤（来自上面的视频，此处仅作整理，侵联删）<ol>
+<li>重装ubuntu（因为刚装好就黑屏了，所以不心疼），通过临时修改grub添加<code>nomodeset</code>的方法（见1）进入到图形界面。</li>
 <li>打开<code>software &amp; update</code>，选择菜单栏中的<code>addtional driver</code>，选择NVIDIA的推荐驱动（最好不要用open），然后<code>apply changes</code>。</li>
-<li>安装完成后restart，此时会黑屏。<code>ctrl+alt+F1-6</code>进入tty模式，输入自己的用户名和密码。</li>
+<li>安装完成后重启电脑，此时会黑屏。<code>ctrl+alt+F1-6</code>进入tty模式，输入自己的用户名和密码。</li>
 <li>查看自己默认的显示管理器，我的默认是gdm3，其他电脑也可能是lightdm。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /etc/X11/default-display-manager</span><br></pre></td></tr></table></figure></li>
 <li>重启完显示管理器<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl restart gdm3</span><br></pre></td></tr></table></figure>
 这样以后可以正常开机了。</li>
-<li>在正常桌面中打开终端，检查显卡驱动是否正确安装，指令为<code>nvidia-smi</code>，我的输出是出现表格但是表格中没有识别出3050（up主也无法识别，不过算正常安装了）。</li>
+</ol>
+</li>
+</ol>
+<h2 id="f-Nvidia驱动安装"><a href="#f-Nvidia驱动安装" class="headerlink" title="f** Nvidia驱动安装"></a>f** Nvidia驱动安装</h2><ol>
+<li>检查是否能识别显卡<code>nvidia-smi</code></li>
+<li>打开additional driver或者software &amp; updates（部分电脑可能无法打开，或者打开速度很慢）</li>
+<li>打开additional driver栏，如果无任何推荐，执行<code>sudo apt update</code>，重新打开addtional driver，选择相应的driver，推荐server型，不建议选open型（为啥，我也忘了）。我选的是<code>NVIDIA Server Driver metapackage from nvidia-driver-535-server(proprietary)</code>。</li>
 <li>安装显卡管理应用。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install nvidia-settings nvidia-prime</span><br></pre></td></tr></table></figure></li>
 <li>打开NVIDIA X Server Settings，转到Prime Profiles，换到性能模式Performance Mode，再重启电脑。</li>
 </ol>
-<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>很后悔以前没有记录配置wsl2远程桌面时候的操作。印象里也是有类似的问题，远程连接一直是黑屏，那时候好像就gdm3和lightdm二选一碰运气来着（笑）。大概是从配完wsl的远程桌面（挺恶心的）以后起才开始留意记录配置教程指路这件事情。<br>很久没用wsl了，扔个用户名防止我忘了它（lrt_ros）</p>
-<h1 id="CUDA和CUDNN"><a href="#CUDA和CUDNN" class="headerlink" title="CUDA和CUDNN"></a>CUDA和CUDNN</h1><p>安装基本按教程走没问题（嘉创飞航平台的指导书《多旋翼无人机系列教材UE-01F实验指导书》）<br>就是检查cudnn的版本的方法太老了，应该执行（cuda的版本自己看）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure>
-
-<h1 id="OPENCV"><a href="#OPENCV" class="headerlink" title="OPENCV"></a>OPENCV</h1><h2 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h2><p>可以多看几篇博客里的依赖项，都装装，不嫌多，比如：<br><a href="https://blog.csdn.net/weixin_44796670/article/details/115900538">https://blog.csdn.net/weixin_44796670/article/details/115900538</a></p>
+<h1 id="干净卸载双系统"><a href="#干净卸载双系统" class="headerlink" title="干净卸载双系统"></a>干净卸载双系统</h1><p>教程指路：<a href="https://blog.csdn.net/qq_42257666/article/details/120721561">教你彻底卸载Ubuntu双系统，去污不残留_双系统卸载ubuntu_振华OPPO的博客-CSDN博客</a></p>
+<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><ol>
+<li>记不得哪几个磁盘是linux相关的话，在windows下下载相关软件比如Linux reader进行查看，或者排除法，一般那个260M的绝对不要动。不然就是windows寄掉。</li>
+<li>Bios开启顺序记得将windows调整至首位，虽然我有几次重装忘了调顺序也没关系，但是看98上好像有人寄的。</li>
+<li>在格式化完磁盘以后不要偷懒而忽略后面的步骤，需要执行到在windows下用diskpart那个步骤</li>
+</ol>
+<h1 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h1><h2 id="时间对齐"><a href="#时间对齐" class="headerlink" title="时间对齐"></a>时间对齐</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">timedatectl set-local-rtc 1</span><br></pre></td></tr></table></figure>
+<p>联网后显示正常</p>
+<h2 id="输入法和中文"><a href="#输入法和中文" class="headerlink" title="输入法和中文"></a>输入法和中文</h2><ul>
+<li>gnome不建议用fcitx，就ibus好了</li>
+<li>中文字体缺失 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install fonts-cns11643-kai fonts-cns11643-sung fonts-moe-standard-kai fonts-moe-standard-song fonts-cwtex-fs fonts-cwtex-heib fonts-cwtex-heib fonts-cwtex-ming fonts-cwtex-yen fonts-wqy-microhei fonts-wqy-zenhei</span><br></pre></td></tr></table></figure></li>
+<li>设置语言（大环境还是建议英文）<br> 在language support内进行设置，Regional Formats栏下的建议还是用English</li>
+<li>安装输入法 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install ibus-libpinyin </span><br><span class="line">sudo apt install ibus-clutter</span><br></pre></td></tr></table></figure></li>
+<li>安装完成后进入settings–&gt;region &amp; language进行语言设置；点击+号，选择chinese(intellegient pinyin)；重启</li>
+</ul>
+<h2 id="截图设置"><a href="#截图设置" class="headerlink" title="截图设置"></a>截图设置</h2><p>settings–&gt;Keyboard Shortcuts–&gt;Screenshots<br>我习惯截图area+clipboard这栏设置为<code>Alt+A</code></p>
+<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><p><a href="https://developer.aliyun.com/article/944899#:~:text=1%EF%BC%9A%E5%A4%87%E4%BB%BD%E5%8E%9F%E6%9D%A5%E7%9A%84%E6%BA%90%20sudo%20cp%20/etc/apt/sources.list%20/etc/apt/sources_init.list,%E5%B0%86%E4%BB%A5%E5%89%8D%E7%9A%84%E6%BA%90%E5%A4%87%E4%BB%BD%E4%B8%80%E4%B8%8B%EF%BC%8C%E4%BB%A5%E9%98%B2%E4%BB%A5%E5%90%8E%E5%8F%AF%E4%BB%A5%E7%94%A8%E7%9A%84%E3%80%82%202%EF%BC%9A%E6%9B%B4%E6%8D%A2%E6%BA%90%20sudo%20gedit%20/etc/apt/sources.list%20%E4%BD%BF%E7%94%A8gedit%E6%89%93%E5%BC%80%E6%96%87%E6%A1%A3%EF%BC%8C%E5%B0%86%E4%B8%8B%E8%BE%B9%E7%9A%84%E9%98%BF%E9%87%8C%E6%BA%90%E5%A4%8D%E5%88%B6%E8%BF%9B%E5%8E%BB%EF%BC%8C%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BB%E4%BF%9D%E5%AD%98%E5%85%B3%E9%97%AD%E3%80%82">参考</a></p>
+<h1 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h1><h2 id="edge"><a href="#edge" class="headerlink" title="edge"></a>edge</h2><p><a href="https://blog.csdn.net/cugautozp/article/details/109325559">20.04linux+edge</a><br>微软的同步功能还是很香的，同步时间过长建议换成自己手机热点，一秒通。</p>
+<h2 id="ros"><a href="#ros" class="headerlink" title="ros"></a>ros</h2><p><a href="http://www.autolabor.com.cn/book/ROSTutorials/chapter1/12-roskai-fa-gong-ju-an-zhuang/124-an-zhuang-ros.html">autolabor ros 教程</a></p>
+<h2 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h2><p><a href="http://www.autolabor.com.cn/book/ROSTutorials/chapter1/14-ros-ji-cheng-kai-fa-huan-jing-da-jian/142-an-zhuang-vscode.html">autolabor ros 教程</a><br>一键同步，爽的一（因为windows下配了比较多）</p>
+<h2 id="terminator"><a href="#terminator" class="headerlink" title="terminator"></a>terminator</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install terminator</span><br></pre></td></tr></table></figure>
+<p>安装完后右键终端进入preference设置透明度</p>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
+<p>安装完git校验ssh<br><a href="https://blog.csdn.net/weixin_42310154/article/details/118340458">github配置ssh key</a><br>如果出现”The authenticity of host ‘github.com’ can’t be established”的错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts</span><br><span class="line">ssh -T git@githubu.com</span><br></pre></td></tr></table></figure>
+<h2 id="clash"><a href="#clash" class="headerlink" title="clash"></a>clash</h2><ul>
+<li>查看自己是x86还是arm<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">uname -m</span><br></pre></td></tr></table></figure></li>
+<li>安装向导<br><a href="https://glados.rocks/console/clash">glados</a><br><a href="https://www.wangt.cc/2021/11/ubuntu-20-04-%E4%B8%8B%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8clash-for-windows-%EF%BC%88%E6%9C%80%E7%AE%80%E5%8D%95%E7%89%88%E6%9C%AC%EF%BC%89/">CFW</a></li>
+</ul>
+<h2 id="DingTalk"><a href="#DingTalk" class="headerlink" title="DingTalk"></a>DingTalk</h2><p>建议别看网上教程，直接上钉钉官网下载deb</p>
+<h1 id="CUDA-CUDNN"><a href="#CUDA-CUDNN" class="headerlink" title="CUDA &amp; CUDNN"></a>CUDA &amp; CUDNN</h1><p>下载建议同时进行，速度有点慢的。<br><a href="https://blog.csdn.net/h3c4lenovo/article/details/119003405">参考</a></p>
+<h2 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h2><ol>
+<li>从<a href="https://developer.nvidia.com/cuda-toolkit-archive">官方</a>下载cuda runfile，并执行相应的提示指令<br>Operating System: Linux<br>Architeture: x86_64<br>Distribution: Ubuntu<br>Version: 20.04<br>Installer Type: runfile(local)</li>
+<li>开run：注意禁止安装集显</li>
+<li>配置环境变量：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit ~/.bashrc</span><br><span class="line">export PATH=/usr/local/cuda-11.7/bin$&#123;PATH:+:$&#123;PATH&#125;&#125;</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64\$&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;</span><br></pre></td></tr></table></figure></li>
+<li>校验：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nvcc -V</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="CUDNN"><a href="#CUDNN" class="headerlink" title="CUDNN"></a>CUDNN</h2><ol>
+<li>进入<a href="https://developer.nvidia.com/cudnn">官网</a>并<strong>登陆</strong>（只能说这个邮箱验证太慢了），选择合适cuda版本的cudnn。我选的Local Installer for Linux x86_64 (Tar)</li>
+<li>解压后进入cudnn文件夹依次执行（注意第一条是cudnn*，网上大多是cudnn.h）<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo cp include/cudnn* /usr/local/cuda-11.7/include</span><br><span class="line">sudo cp lib/libcudnn* /usr/local/cuda-11.7/lib64</span><br><span class="line">sudo chmod a+r /usr/local/cuda-11.7/include/cudnn.h </span><br><span class="line">sudo chmod a+r /usr/local/cuda-11.7/lib64/libcudnn*</span><br></pre></td></tr></table></figure></li>
+<li>检验（网上检验方法大概率是没有输出的）<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="OPENCV"><a href="#OPENCV" class="headerlink" title="OPENCV"></a>OPENCV</h1><h2 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h2><p>可以多看几篇博客里的依赖项，都装装不嫌多（但是别无脑粘啊。。。），比如：<br><a href="https://blog.csdn.net/weixin_44796670/article/details/115900538">ubuntu20.04搭建opencv 4.5.0</a></p>
 <h2 id="下载OPENCV安装包和contrib"><a href="#下载OPENCV安装包和contrib" class="headerlink" title="下载OPENCV安装包和contrib"></a>下载OPENCV安装包和contrib</h2><p>这里注意两个包版本对上，然后重命名为opencv_contrib和opencv，然后将opencv_trib放到opencv文件下，然后执行：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd opencv</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure>
 <h2 id="大概率会缺的东西（不要执行，只是做说明）"><a href="#大概率会缺的东西（不要执行，只是做说明）" class="headerlink" title="大概率会缺的东西（不要执行，只是做说明）"></a>大概率会缺的东西（不要执行，只是做说明）</h2><p>如果按照某些教程直接走的话，大概率会遇到这几个问题：</p>
 <ol>
 <li>安装OpenCV时提示缺少boostdesc_bgm.i文件：<a href="https://blog.csdn.net/AlexWang30/article/details/99612188">https://blog.csdn.net/AlexWang30/article/details/99612188</a></li>
 <li>找不到 feature2d&#x2F;test&#x2F;test_detectors_regression.impl.hpp 文件：<a href="https://blog.csdn.net/xiewenrui1996/article/details/108683866">https://blog.csdn.net/xiewenrui1996/article/details/108683866</a></li>
-<li>可能还会有比较小众的问题，比如最后都[100%]了，还一大堆phase unwrapping之类的，忘了<br>前两个还好，第三个根本找不到办法，估计是因为中途加上了boostdesc_bgm.i等文件然后cmake选项之类的问题，我也不清楚，就是连坐出来的问题吧，所以建议把缺的都补上了再开始cmake</li>
+<li>可能还会有比较小众的问题，比如最后都[100%]了，还一大堆phase unwrapping之类的，忘了<br>前两个还好，第三个估计是因为中途加上了boostdesc_bgm.i等文件产生的编译顺序问题cmake选项之类的问题，我也不清楚，就是连坐出来的问题吧，所以建议把缺的都补上了再开始cmake</li>
 </ol>
 <h2 id="真正做的编译准备和命令"><a href="#真正做的编译准备和命令" class="headerlink" title="真正做的编译准备和命令"></a>真正做的编译准备和命令</h2><ol>
-<li>先按照 <a href="https://blog.csdn.net/AlexWang30/article/details/99612188">https://blog.csdn.net/AlexWang30/article/details/99612188</a> 把所有缺失的文件下载下来放到opencv_contrib&#x2F;modules&#x2F;xfeatures2d&#x2F;src&#x2F;下</li>
+<li>先按照 <a href="https://blog.csdn.net/AlexWang30/article/details/99612188">.i文件缺失</a> 把所有缺失的文件下载下来放到opencv_contrib&#x2F;modules&#x2F;xfeatures2d&#x2F;src&#x2F;下</li>
 <li>把opencv &#x2F; modules &#x2F; features2d复制粘贴到build目录下</li>
-<li>在build目录下执行<code>cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=YES -D OPENCV_EXTRA_MODULES_PATH=/home/主机登录名/opencv/opencv_contrib/modules ..</code> ，这里-D OPENCV_GENERATE_PKGCONFIG&#x3D;YES是因为OpenCV4以上默认不使用pkg-config，该编译选项开启生成opencv4.pc文件，支持pkg-config功能</li>
+<li>在build目录下执行<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=YES -D OPENCV_EXTRA_MODULES_PATH=/home/主机登录名/opencv/opencv_contrib/modules ..</span><br></pre></td></tr></table></figure>
+这里-D OPENCV_GENERATE_PKGCONFIG&#x3D;YES是因为OpenCV4以上默认不使用pkg-config，该编译选项开启生成opencv4.pc文件，支持pkg-config功能</li>
 <li>完成后执行<code>sudo make -j8</code>（-j8是根据电脑配置添加上的参数，8代表为处理器8线程，可以省略）</li>
 <li><code>sudo make install</code></li>
 </ol>
@@ -76,18 +108,19 @@
 </ol>
 <p>综合一下，我是把2中的代码直接替换我的image_opencv.cpp，执行测试的时候发现我脸蓝了，狗灰了，按照3中将将 image_to_mat函数中的<code>float val = im.data[c*im.h*im.w + y*im.w + x];</code>替换为<code>float val = copy.data[c*im.h*im.w + y*im.w + x];</code>，顺利通过~。</p>
 <h1 id="px4"><a href="#px4" class="headerlink" title="px4"></a>px4</h1><p><strong>【自用，写的很乱】</strong></p>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p><a href="https://blog.csdn.net/HuangChen666/article/details/128754106">https://blog.csdn.net/HuangChen666/article/details/128754106</a><br><a href="https://zhuanlan.zhihu.com/p/546055816">https://zhuanlan.zhihu.com/p/546055816</a><br>基本是按第一个博客来的，出的问题主要是clone不完整。</p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p><a href="https://blog.csdn.net/HuangChen666/article/details/128754106">Ubuntu20.04+MAVROS+PX4+Gazebo保姆级安装教程</a></p>
+<p>出的问题主要是clone不完整。</p>
 <ol>
 <li>第一次装后make测试的时候给我报datamen的错误，没法takeoff（pxh命令行没有，装完也没有reboot的提示），并且多次测试的时候，多个飞机叠在一起，问题描述如果搜过的话就是和gitee上有个issue一毛一样，我这不指路了。大概是因为按第二个博客走的时候checkout了，版本错乱。</li>
-<li>后来重新clone px4-autopilot，按第一个教程走，第一遍通了，后面测试又没法make了。重命名为firmware后才可以。后来第二次装不mv也没事了，不知道啥毛病。</li>
+<li>后来重新clone px4-autopilot，按第一个教程走，第一遍通了，后面测试又没法make了。重命名为px4-firmware后才可以。后来另一台不重命名也没事了，不知道啥毛病。</li>
 <li>端口不存在的问题FCU: DeviceError:serial:open: No such file or directory（没连硬件）不是什么大问题，中间也遇到了，博客园有篇<a href="https://www.cnblogs.com/soapen/articles/17342907.html#3mavros%E5%AE%89%E8%A3%85">https://www.cnblogs.com/soapen/articles/17342907.html#3mavros%E5%AE%89%E8%A3%85</a> ，没有亲测过。</li>
 </ol>
-<p>总之最后就是按2所示，重新clone，不checkout，mv，reboot，最后测试可以参考<a href="https://zhuanlan.zhihu.com/p/438699349">https://zhuanlan.zhihu.com/p/438699349</a></p>
-<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/PX4/PX4-Autopilot.git --recursive</span><br><span class="line">cd PX4-Autopilot/</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">// 这一步做完以后一定查看是否有没clone完的情况</span><br><span class="line">// 第一次配由于各种问题，发现需要重命名，不知道为什么</span><br><span class="line">// 第二次配我没有重命名，后面配环境变量的时候也注意一下</span><br><span class="line">mv PX4-Autopilot PX4_Firmware</span><br><span class="line">cd PX4_Firmware</span><br><span class="line">bash ./Tools/setup/ubuntu.sh</span><br><span class="line">//reboot</span><br><span class="line">make px4_sitl_default gazebo</span><br></pre></td></tr></table></figure>
+<p>大部分问题是因为<br>最后测试可以参考<a href="https://zhuanlan.zhihu.com/p/438699349">https://zhuanlan.zhihu.com/p/438699349</a></p>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/PX4/PX4-Autopilot.git --recursive</span><br><span class="line">cd PX4-Autopilot/</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">// 这一步做完以后一定查看是否有没clone完的情况</span><br><span class="line">// 第一次配由于各种问题，发现需要重命名，不知道是不是我已经配完bash了</span><br><span class="line">// 第二次配我没有重命名，后面配环境变量的时候也注意一下</span><br><span class="line">mv PX4-Autopilot PX4_Firmware</span><br><span class="line">cd PX4_Firmware</span><br><span class="line">bash ./Tools/setup/ubuntu.sh</span><br><span class="line">//reboot</span><br><span class="line">make px4_sitl_default gazebo</span><br></pre></td></tr></table></figure>
 <p>成功后配置环境变量（可以take off）</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit ~/.bashrc</span><br><span class="line">//加这几句在后面</span><br><span class="line">source ~/PX4_Firmware/Tools/simulation/gazebo-classic/setup_gazebo.bash ~/PX4_Firmware ~/PX4_Firmware/build/px4_sitl_default</span><br><span class="line">export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/PX4_Firmware</span><br><span class="line">export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/PX4_Firmware/Tools/simulation/gazebo-classic/sitl_gazebo-classic</span><br></pre></td></tr></table></figure>
 
-<h2 id="碎话"><a href="#碎话" class="headerlink" title="碎话"></a>碎话</h2><p>我全忘了啊，刚切到windows下脑子就乱了，make的测试也有点乱了，好像两个来着？反正重要的是别checkout。<br>总之看清楚报错，没正常显示又没出红字的更容易忽略了（clone）。</p>
+<h1 id="slam14"><a href="#slam14" class="headerlink" title="slam14"></a>slam14</h1><p><a href="https://zhuanlan.zhihu.com/p/452256687">视觉SLAM十四讲环境搭建（测试环境Ubuntu20.04）</a><br>其中Sophus<br><a href="https://blog.csdn.net/weixin_62952541/article/details/130181245">踩坑 Sophus 模板库安装及编译</a></p>
 ]]></content>
       <categories>
         <category>配置备忘录</category>
@@ -121,12 +154,12 @@
     <url>/2023/09/24/pytorch-conda-pycharm%E9%85%8D%E7%BD%AE%E5%A4%87%E5%BF%98/</url>
     <content><![CDATA[<h3 id="下载conda"><a href="#下载conda" class="headerlink" title="下载conda"></a>下载conda</h3><p>miniconda和anaconda应该都是可以的，因为花书上是miniconda所以我也是装的miniconda<br><a href="https://www.bilibili.com/video/BV1JP4y1f7q3">李沐动手学深度学习Windows环境配置</a><br>这个是没有配GPU的</p>
 <h3 id="配置GPU"><a href="#配置GPU" class="headerlink" title="配置GPU"></a>配置GPU</h3><p>CPU和GPU应该都可以，大致的过程是查阅电脑参数并选择<strong>合适自己电脑的CUDA</strong>，我这台是Y7000P RTX3050的，基本上30开头的显卡都是装11版本的CUDA，我装的是11.7CUDA<br>这个up主超级详细，简直是我的大救星！<br><a href="https://www.bilibili.com/video/BV1S5411X7FY">最详细的 Windows 下 PyTorch 入门深度学习环境安装与配置 CPU GPU 版 | 土堆教程</a></p>
-<h3 id="配置pytorch"><a href="#配置pytorch" class="headerlink" title="配置pytorch"></a>配置pytorch</h3><p>也是看上面这个up主（2022年的），评论也很精华！基本上可以解决，老旧版本的都有。<br>一些坑：</p>
+<h3 id="配置pytorch"><a href="#配置pytorch" class="headerlink" title="配置pytorch"></a>配置pytorch</h3><p>也是看上面这个up主（2022年的），评论也很精华，基本上可以解决，老旧版本的都有。<br>一些坑：</p>
 <ul>
 <li>换源！</li>
 <li>中途因为某个问题我把chardet卸掉了，再装的时候失败，无法登上jupyter notebook，这边试出来是豆瓣网的trust问题，要加–trust参数，这个csdn上输一下报错就有命令的</li>
 </ul>
-<h3 id="conda-pycharm"><a href="#conda-pycharm" class="headerlink" title="conda+pycharm"></a>conda+pycharm</h3><p>高版本的pycharm无法识别本地interpreter，先按默认创个环境，再进setting，python interpreter，选择condabin下的conda.bat（可能anaconda和mini有区别，anaconda可能是exe？），之后load就可以选择自己的环境了。<br><a href="https://blog.csdn.net/qianyunzzz/article/details/122489967">高版本pycharm配置</a></p>
+<h3 id="conda-pycharm"><a href="#conda-pycharm" class="headerlink" title="conda+pycharm"></a>conda+pycharm</h3><p>高版本的pycharm无法识别本地interpreter，先按默认创个环境，再进setting，python interpreter，选择condabin下的conda.bat（可能anaconda和mini有区别，anaconda可能是exe），之后load就可以选择自己的环境了。<br><a href="https://blog.csdn.net/qianyunzzz/article/details/122489967">高版本pycharm配置</a></p>
 ]]></content>
       <categories>
         <category>配置备忘录</category>
@@ -162,7 +195,8 @@
   <entry>
     <title>托福首考记录和碎碎念</title>
     <url>/2023/11/24/%E6%89%98%E7%A6%8F%E9%A6%96%E8%80%83%E8%AE%B0%E5%BD%95%E5%92%8C%E7%A2%8E%E7%A2%8E%E5%BF%B5/</url>
-    <content><![CDATA[<h2 id="背景和碎碎念"><a href="#背景和碎碎念" class="headerlink" title="背景和碎碎念"></a>背景和碎碎念</h2><p>lz参加是的9.10早上的考试院托福。备考从7.13开始，中间还夹着各种社会实践学长组之类的（活动前后会大摆一段时间，合计下来大概有在学的时间应该算一个多月）。这次算第一次参加托福，而且还年轻，所以压力也不大（压力是不大，但焦虑还是要为2100焦虑的），没有很明确的说一定要考到什么分数，主打佛系备考，反正还要继续交钱。</p>
+    <content><![CDATA[<p>不敢称作经验分享，故作记录</p>
+<h2 id="背景和碎碎念"><a href="#背景和碎碎念" class="headerlink" title="背景和碎碎念"></a>背景和碎碎念</h2><p>lz参加是的9.10早上的考试院托福。备考从7.13开始，中间还夹着各种社会实践学长组之类的（活动前后会大摆一段时间，合计下来大概有在学的时间应该算一个多月）。这次算第一次参加托福，而且还年轻，所以压力也不大（压力是不大，但焦虑还是要为2100焦虑的），没有很明确的说一定要考到什么分数，主打佛系备考，反正还要继续交钱。</p>
 <p>英语情况：lz裸考四级599裸考六级591，高考结束的时候报过一个大概7天左右的托福班（文三路的肆墨教育，四个part的老师人都很好[而且也只有四个老师和一两个检查背单词收手机的助教]，水平也很高），不过这次备考没报班。</p>
 <h2 id="新版考试感受"><a href="#新版考试感受" class="headerlink" title="新版考试感受"></a>新版考试感受</h2><ul>
 <li><p>到达考试院</p>
@@ -177,7 +211,7 @@
 </li>
 <li><p>考试过程</p>
 <ul>
-<li>新版考试时长2h，8：45以后就陆续开始了。<br>  阅读之前先测耳机和麦克风，我没搞清楚麦克风怎么调，直接点了测试按钮，测出来声音low就直接跳进下一流程了，一脸懵，导致口语时一直在把麦克风往嘴边靠然后喊（对我来说的“喊”）。</li>
+<li>新版考试时长2h，8：45以后就陆续开始了。<br>  阅读之前先测耳机和麦克风，我没搞清楚麦克风怎么调，直接点了测试按钮，测出来声音low就直接跳进下一流程了，一脸懵，导致口语时一直在把麦克风往嘴边靠然后喊（对我来说的“喊”）。（楼下前辈说low应该没关系，后面应该会自动调整）</li>
 <li><strong>阅读</strong>：虽然早上摄入了一点阅读，但是刚开始没有进入状态，前面三题像是没睡醒做的，后来回去把前三题全改了一遍。。。第二篇快做完的时候其实已经听到别人耳机里的声音了。不过对第一篇不是很放心，在阅读游荡到时间流完。另外当时考试的时候隔壁桌的兄弟程序好像出bug了，当时戴着耳机不是很确定，大概是因为狂点导致回不去了还是黑屏好像，老师也只是说之后再看先考着，所以大家考试还是心平气和做题，<strong>慢慢点next</strong>）</li>
 <li><strong>听力</strong>：前面都比较正常，在最后一篇还没听完的时候考场里已经开始有人考口语了，感觉这也很影响专注力，倒不是因为声音对听力的干扰，只是担心自己进度跟不上的焦虑（返回来看其实进度还OK的），写题目的时候会刻意听听别人咋讲，我当时听到了task1里的independence, children和task2的roof, energy，虽然给我口语有个大概的准备，但是听力做题的专注力就一般，而且平时听力结束还可以剩比较多的时间，这次听点这听点那最后写完只剩40s了，有点危险。<strong>新版听力没有OK按键</strong>。</li>
 <li><strong>口语</strong>：速度在中游，努力喊就是了。</li>
