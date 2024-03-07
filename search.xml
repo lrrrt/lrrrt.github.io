@@ -120,7 +120,7 @@
 <p>成功后配置环境变量（可以take off）</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit ~/.bashrc</span><br><span class="line">//加这几句在后面</span><br><span class="line">source ~/PX4_Firmware/Tools/simulation/gazebo-classic/setup_gazebo.bash ~/PX4_Firmware ~/PX4_Firmware/build/px4_sitl_default</span><br><span class="line">export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/PX4_Firmware</span><br><span class="line">export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/PX4_Firmware/Tools/simulation/gazebo-classic/sitl_gazebo-classic</span><br></pre></td></tr></table></figure>
 
-<h1 id="slam14"><a href="#slam14" class="headerlink" title="slam14"></a>slam14</h1><p><a href="https://zhuanlan.zhihu.com/p/452256687">视觉SLAM十四讲环境搭建（测试环境Ubuntu20.04）</a><br>其中Sophus<br><a href="https://blog.csdn.net/weixin_62952541/article/details/130181245">踩坑 Sophus 模板库安装及编译</a></p>
+<h1 id="slam14"><a href="#slam14" class="headerlink" title="slam14"></a>slam14</h1><p><a href="https://zhuanlan.zhihu.com/p/452256687">视觉SLAM十四讲环境搭建（测试环境Ubuntu20.04）</a><br>Sophus<br><a href="https://blog.csdn.net/weixin_62952541/article/details/130181245">踩坑 Sophus 模板库安装及编译</a></p>
 ]]></content>
       <categories>
         <category>配置备忘录</category>
